@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES2016",
+        "module": "commonjs",
+        "allowJs": true,
+        "sourceMap": true,
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": true,
+        // "moduleResolution": "node",
+        "preserveConstEnums": true,
+        "outDir": "./dist", 
+        "types": [
+            "node"
+          ]
+    },
+    "compileOnSave": true,
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
