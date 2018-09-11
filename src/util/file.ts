@@ -54,7 +54,7 @@ export default class SourceFile {
     holder: (() => void) | null = null
 
     checkHolder() {
-        if(this.holder){
+        if (this.holder) {
             const a = this.holder
             this.holder = null
             a()
@@ -89,7 +89,17 @@ export default class SourceFile {
         }
 
         this.isShifting = false
+
+        this._end()
+
+        return this
     }
+
+
+    end(f: Function) {
+        this._end = f
+    }
+    _end: Function = () => { }
 }
 
 

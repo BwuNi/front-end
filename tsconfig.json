@@ -16,7 +16,7 @@
     },
     "compileOnSave": true,
     "include": [
-        "src/**/*"
+        "src/**/*", "token/index.ts", "token/TokenTool.ts"
     ],
     "exclude": [
         "node_modules",
