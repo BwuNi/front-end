@@ -1,22 +1,51 @@
 
-// enum WordType {
-//     String, Number, Calcu, L, R, Blank, Error, Equal, Sign, Key
-// }
+enum WordType {
+    String = 'String', 
+    Number = 'Number', 
+    Calcu = 'Calcu', 
+    Boolen = "Boolen",
+    
+    // ()
+    L0 = 'L0',  
+    R0 = 'R0',
+    // []
+    L1 = 'L1', 
+    R1 = 'R1', 
+    // {}
+    L2 = 'L2', 
+    R2 = 'R2', 
+    // <>
+    L3 = 'L3', 
+    R3 = 'R3', 
+    
 
 
-// const charMap = [
-//     { n: WordType.String, v: /[a-zA-Z]/, },
-//     { n: WordType.Number, v: /[a-zA-Z]/ },
-//     { n: WordType.Calcu, v: /\-|\+|\*|\/|\^|\%/ },
-//     { n: WordType.L, v: /\(/ },
-//     { n: WordType.R, v: /\)/ },
-//     { n: WordType.Blank, v: /\n|\t| / },
-//     { n: WordType.Equal, v: /=/ }
-// ]
+    Blank = 'Blank', 
 
-// function checkWord(str: string): WordType {
-//     const res = str.trim()
-// }
+    // ==
+    Equal = 'Equal', 
+    // >
+    Bigger = '>>', 
+    // <
+    Smaller = '<<', 
+    // >=
+    BiggerEqual = '>=', 
+    // <=
+    SmallerEqual = '<=', 
 
+    //Logic
+    And = "&&",
+    Or = '||',
+    Not = '!',
 
-// export { WordType }
+    comment = "//",
+
+    // =
+    Set = 'Set', 
+
+    Sign = 'Sign', 
+    KeyWord = 'Key',
+    Error = 'Error',
+}
+
+export default WordType

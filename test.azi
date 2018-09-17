@@ -1,0 +1,30 @@
+(
+    let add (x y) = (
+        (let m (x + y))
+        (add[m 0])
+    )
+)
+
+(let m = a:b)
+
+(let str = "str")
+
+(let mun = 2312313)
+
+(let mMap = {
+    a:b
+    c:d
+    x:y
+    m:n
+})
+
+let mArr = [a f d s fd df fe]
+
+mArr 
+    -> map(
+        (a) = (a + 1)
+    )
+    -> forEach(
+        (a) = (print a)
+    )
+

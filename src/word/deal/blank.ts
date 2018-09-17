@@ -17,19 +17,21 @@ export default function (wordTool: WordTool) {
         [Status.outCall],
         (temp, status, type, char) => {
             status = Status.inCall
-            return { temp: '',status }
+            return { temp: '', status }
         }
     )
 
     wordTool.loadBreakRule(
         [CharType.Blank],
-        [Status.inKey, Status.inSign,Status.inNumber],
+        [Status.Word],
         (temp, status, ) => {
 
+            temp = temp.trim()
             const words: Word[] = [{
-                type: status == Status.inKey ? WordType.Key
-                    : status == Status.inSign ? WordType.Sign
-                        : WordType.Number
+                type:
+                    /true|false/.test(temp) ? WordType.Boolen
+                        : /let/.test(temp) ? WordType.KeyWord
+                            : WordType.Sign
                 ,
                 value: temp
             }]
@@ -38,8 +40,28 @@ export default function (wordTool: WordTool) {
 
             temp = ''
             return {
-                temp,status,
-                words
+                temp, status, words
+            }
+        }
+    )
+
+    wordTool.loadBreakRule(
+        [CharType.Blank],
+        [Status.Number],
+        (temp, status, ) => {
+
+            temp = temp.trim()
+            const words: Word[] = [{
+                type:WordType.Number
+                ,
+                value: temp
+            }]
+
+            status = Status.inCall
+
+            temp = ''
+            return {
+                temp, status, words
             }
         }
     )

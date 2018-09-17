@@ -1,20 +1,6 @@
 import { CharType, checkChar } from "./char";
-
-enum Status {
-    inStr='inStr',
-    inSign='inSign',
-    inNumber='inNumber',
-    inKey='inKey',
-    inCall='inCall',
-    outCall='outCall',
-    Bslant='Bslant'
-}
-
-
-
-enum WordType {
-    String = 'String', Number = 'Number', Calcu = 'Calcu', L = 'L', R = 'R', Blank = 'Blank', Error = 'Error', Equal = 'Equal', Sign = 'Sign', Key = 'Key'
-}
+import Status from "./status"
+import WordType from './word'
 
 type Word = { type: WordType, value?: string }
 
@@ -22,7 +8,7 @@ class WordTool {
 
     search: {
         [status: string]: {
-            [charType: string]: (temp: string, status: Status, type: CharType, char: string) => { temp: string, status?: Status, isBreak?: Boolean, words?: Word[] }
+            [charType: string]: (temp: string, status: Status, type: CharType, char: string) => { temp: string, status?: Status, isReload?: boolean, words?: Word[] }
         }
     } = {}
     temp: string = ''
@@ -35,7 +21,7 @@ class WordTool {
 
     }
 
-    loadBreakRule(types: CharType[], statuss: Status[], func: (temp: string, status: Status, type: CharType, char: string) => { temp: string, status?: Status, isBreak?: Boolean, words?: Word[] }) {
+    loadBreakRule(types: CharType[], statuss: Status[], func: (temp: string, status: Status, type: CharType, char: string) => { temp: string, status?: Status, isReload?: boolean, words?: Word[] }) {
 
 
         types.forEach(c => {
@@ -59,13 +45,21 @@ class WordTool {
             console.log(this.status,type)
         }
 
-        const { temp, words = [], status = this.status } = func(this.temp, this.status, type, char)
+        let _reload = true
 
-        this.temp = temp
+        while(_reload){
 
-        this.status = status
+            const { temp, words = [], status = this.status,isReload = false } = func(this.temp, this.status, type, char)
 
-        this.result = this.result.concat(words)
+            this.temp = temp
+    
+            this.status = status
+    
+            this.result = this.result.concat(words)
+            
+            _reload = isReload
+        }
+
 
     }
 
