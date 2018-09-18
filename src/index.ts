@@ -1,23 +1,26 @@
-import File from './util/file'
-import * as path from 'path'
-import { wordTool, Status, CharType, WordType, Word } from './word'
+// import File from './util/file'
+// import * as path from 'path'
+// import { wordTool, Status, CharType, WordType, Word } from './word'
 
-const file = new File(path.resolve(__dirname, '../static/test'))
-
-
+// const file = new File(path.resolve(__dirname, '../static/test'))
 
 
 
-file.iter(async line => line.iter(char => {
 
-    wordTool.loadChar(char)
 
-}))
+// file.iter(async line => line.iter(char => {
 
-file.end(() => {
+//     wordTool.loadChar(char)
 
-    console.log(wordTool.getResult())
+// }))
 
-})
+// file.end(() => {
 
+//     console.log(wordTool.getResult())
+
+// })
+
+import test from './lexical analysis'
+
+test()
 
