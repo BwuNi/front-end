@@ -1,6 +1,6 @@
 import { CharItem, CharType, charArr, charTypeMap, charSymbolMap } from './Char'
 import { Change, changeArr } from './Change'
-import FA from './NFA'
+import FA from '.'
 
 export default function nfa2dfa(nfa: FA) {
     const start = nfa.start
@@ -33,8 +33,6 @@ export default function nfa2dfa(nfa: FA) {
 
     return nfa
 }
-
-
 
 function collection(start: Symbol, map: { [x: string]: boolean }, nfa: FA) {
     const s0 = nfa.change

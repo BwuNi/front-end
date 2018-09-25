@@ -30,6 +30,7 @@ enum CharType {
     Calcu = 'Calcu',
 
     Blank = 'Blank',
+    Br = 'br',
 
     // ""
     Dquota = 'Dquota',
@@ -58,7 +59,7 @@ const charArr: CharItem[] = [
     { s:Symbol(Math.random()), n: CharType.Letter, v: /[a-zA-Z]/,  },
     { s:Symbol(Math.random()), n: CharType.Number, v: /[0-9]/ },
     { s:Symbol(Math.random()), n: CharType.Equal, v: /=/ },
-    { s:Symbol(Math.random()), n: CharType.Dot, v: /./ },
+    { s:Symbol(Math.random()), n: CharType.Dot, v: /\./ },
     { s:Symbol(Math.random()), n: CharType.L0, v: /\(/ },
     { s:Symbol(Math.random()), n: CharType.R0, v: /\)/ },
     { s:Symbol(Math.random()), n: CharType.L1, v: /\[/ },
@@ -71,7 +72,8 @@ const charArr: CharItem[] = [
     { s:Symbol(Math.random()), n: CharType.Or, v: /\|/ },
     { s:Symbol(Math.random()), n: CharType.Nd, v: /&/ },
     { s:Symbol(Math.random()), n: CharType.Calcu, v: /\-|\+|\*|\^|\%/ },
-    { s:Symbol(Math.random()), n: CharType.Blank, v: /\n|\t| / },
+    { s:Symbol(Math.random()), n: CharType.Blank, v: /\t| / },
+    { s:Symbol(Math.random()), n: CharType.Br, v: /\n/ },
     { s:Symbol(Math.random()), n: CharType.Bquota, v: /`/ },
     { s:Symbol(Math.random()), n: CharType.Squota, v: /'/ },
     { s:Symbol(Math.random()), n: CharType.Dquota, v: /"/ },
@@ -95,4 +97,5 @@ const charSymbolMap: { [x: string]: CharItem } = charArr.reduce((r: { [x: string
 }, {})
 
 export default CharType
+
 export {CharItem,CharType,charArr,charTypeMap,charSymbolMap}

@@ -119,6 +119,13 @@ class FA {
         }
         throw new Error("token error");
     }
+    addRule(status, end, change, map) {
+        this.status = this.status.concat(status);
+        this.end = this.end.concat(end);
+        this.change = this.change.concat(change);
+        this.map = Object.assign({}, this.map, map);
+        return this;
+    }
 }
 exports.default = FA;
 function checkChar(char) {
@@ -128,4 +135,4 @@ function checkChar(char) {
     }
     return Char_1.CharType.Error;
 }
-//# sourceMappingURL=NFA.js.map
+//# sourceMappingURL=index.js.map
