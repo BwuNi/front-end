@@ -38,6 +38,8 @@ enum WordType {
 
     // =
     Set = 'Set', 
+    // :
+    Colon = 'Colon', 
 
     Sign = 'Sign', 
     KeyWord = 'Key',

@@ -20,11 +20,4 @@
 
 let mArr = (a f d s fd df fe)
 
-mArr 
-    -> map(
-        (a) = (a + 1)
-    )
-    -> forEach(
-        (a) = (print a)
-    )
 

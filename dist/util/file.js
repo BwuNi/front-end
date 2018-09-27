@@ -33,6 +33,7 @@ class SourceFile {
         });
         objReadline.on('close', () => {
             this.isPushing = false;
+            this.checkHolder();
         });
     }
     pushLine(line) {
@@ -53,7 +54,9 @@ class SourceFile {
     shiftLine() {
         return __awaiter(this, void 0, void 0, function* () {
             const res = this.lines.shift();
+            console.log(res);
             if (!res && this.isPushing == false) {
+                console.log(1);
                 return null;
             }
             else if (!res) {

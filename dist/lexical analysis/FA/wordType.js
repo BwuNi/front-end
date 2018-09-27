@@ -23,6 +23,7 @@ var WordType;
     WordType["Not"] = "!";
     WordType["comment"] = "//";
     WordType["Set"] = "Set";
+    WordType["Colon"] = "Colon";
     WordType["Sign"] = "Sign";
     WordType["KeyWord"] = "Key";
     WordType["Error"] = "Error";

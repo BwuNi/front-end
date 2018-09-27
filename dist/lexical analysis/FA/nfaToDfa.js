@@ -2,13 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Char_1 = require("./Char");
 function nfa2dfa(nfa) {
-    const start = nfa.start;
-    const m = {};
     let i = 0;
     let target = nfa.status[i];
     while (target) {
         const s = collection(target, {}, nfa);
-        console.log(s.length);
         if (s.length == 1 || s.length == 0) {
             i = i + 1;
             target = nfa.status[i];

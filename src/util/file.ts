@@ -38,6 +38,7 @@ export default class SourceFile {
 
         objReadline.on('close', () => {
             this.isPushing = false
+            this.checkHolder()
         });
     }
 
@@ -65,7 +66,10 @@ export default class SourceFile {
     async shiftLine(): Promise<Line | null> {
         const res = this.lines.shift()
 
+        console.log(res)
+
         if (!res && this.isPushing == false) {
+            console.log(1)
             return null
         } else if (!res) {
             await this.createHolder()
@@ -87,6 +91,8 @@ export default class SourceFile {
             if (await func(line) === false) break
             line = await this.shiftLine()
         }
+
+
 
         this.isShifting = false
 

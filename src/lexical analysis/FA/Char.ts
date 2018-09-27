@@ -39,6 +39,8 @@ enum CharType {
     // ``
     Bquota = 'Bquota',
 
+    //:
+    Colon = 'Colon',
     // /
     Slant = "Slant",
     // \
@@ -79,6 +81,7 @@ const charArr: CharItem[] = [
     { s:Symbol(Math.random()), n: CharType.Dquota, v: /"/ },
     { s:Symbol(Math.random()), n: CharType.Slant, v: /\// },
     { s:Symbol(Math.random()), n: CharType.Bslant, v: /\\/ },
+    { s:Symbol(Math.random()), n: CharType.Colon, v: /:/ },
 
 
     

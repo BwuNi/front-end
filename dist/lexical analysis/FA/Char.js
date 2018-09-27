@@ -23,6 +23,7 @@ var CharType;
     CharType["Dquota"] = "Dquota";
     CharType["Squota"] = "Squota";
     CharType["Bquota"] = "Bquota";
+    CharType["Colon"] = "Colon";
     CharType["Slant"] = "Slant";
     CharType["Bslant"] = "Bslant";
     CharType["None"] = "none";
@@ -53,6 +54,7 @@ const charArr = [
     { s: Symbol(Math.random()), n: CharType.Dquota, v: /"/ },
     { s: Symbol(Math.random()), n: CharType.Slant, v: /\// },
     { s: Symbol(Math.random()), n: CharType.Bslant, v: /\\/ },
+    { s: Symbol(Math.random()), n: CharType.Colon, v: /:/ },
     { s: Symbol(Math.random()), n: CharType.None, v: /\\/ },
 ];
 exports.charArr = charArr;

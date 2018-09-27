@@ -11,14 +11,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const file_1 = require("./util/file");
 const path = require("path");
 const lexical_analysis_1 = require("./lexical analysis");
-const file = new file_1.default(path.resolve(__dirname, '../static/test'));
+const parser_1 = require("./parser");
+const file = new file_1.default(path.resolve(__dirname, '../static/test.azi'));
 file.iter((line) => __awaiter(this, void 0, void 0, function* () {
     return line.iter(char => {
         lexical_analysis_1.default.load(char);
     });
 }));
 file.end(() => {
-    lexical_analysis_1.default.endLoad();
-    console.log(lexical_analysis_1.default);
+    parser_1.default(lexical_analysis_1.default.result);
 });
 //# sourceMappingURL=index.js.map

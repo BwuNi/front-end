@@ -3,10 +3,7 @@ import { Change, changeArr } from './Change'
 import FA from '.'
 
 export default function nfa2dfa(nfa: FA) {
-    const start = nfa.start
-
-    const m = {}
-
+    
     let i = 0
     let target = nfa.status[i]
 
@@ -14,7 +11,6 @@ export default function nfa2dfa(nfa: FA) {
 
         const s = collection(target, {}, nfa)
 
-        console.log(s.length)
 
         if (s.length == 1 || s.length == 0) {
             i = i + 1

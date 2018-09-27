@@ -14,6 +14,9 @@ class FA {
         this.end = [start];
         this.temp = '';
         this.result = [];
+        this.endNow = [];
+        this.endNowStart = [];
+        this.endCanStart = [];
         this.change = [{
                 now: start,
                 accept: Char_1.CharType.Blank,
@@ -36,6 +39,11 @@ class FA {
         this.now = this.start;
     }
     finish() {
+        this.result.push({
+            value: this.temp.trim(),
+            status: this.map[this.now.toString()]
+        });
+        this.temp = '';
         this.now = this.finished;
     }
     toDfa() {
@@ -47,9 +55,16 @@ class FA {
             r[v.toString()] = true;
             return r;
         }, {});
+        console.log(status);
+        console.log(searchMap);
+        console.log(searchMap[this.start.toString()]);
         const newone = Symbol(Math.random());
-        if (searchMap[this.start.toString()])
+        if (searchMap[this.start.toString()]) {
             this.start = newone;
+        }
+        if (searchMap[this.now.toString()]) {
+            this.now = newone;
+        }
         this.status = this.status.filter(v => !searchMap[v.toString()]);
         this.status.push(newone);
         const i = this.end.length;
@@ -66,7 +81,6 @@ class FA {
             (v.now == newone) &&
             (v.accept == Char_1.CharType.None)));
         for (let i of status) {
-            console.log(this.map[i.toString()]);
             if (this.map[i.toString()]) {
                 this.map[newone.toString()] = this.map[i.toString()];
                 delete this.map[i.toString()];
@@ -84,17 +98,12 @@ class FA {
             }
         }
         if (next === null) {
-            if (this.now == this.start) {
-                throw new Error("token error1");
-            }
             for (let v of this.end) {
                 if (v === this.now) {
-                    this.result.push({
-                        value: this.temp,
-                        status: this.map[this.now.toString()]
-                    });
-                    this.temp = '';
                     this.finish();
+                    if (this.isEndNowStart(this.now)) {
+                        this.load(' ');
+                    }
                     this.load(char);
                     return this.now;
                 }
@@ -103,6 +112,13 @@ class FA {
         }
         this.temp += char;
         this.now = next;
+        if (this.isEndNowStart(next)) {
+            this.finish();
+            this.load(' ');
+        }
+        else if (this.isEndNow(next)) {
+            this.finish();
+        }
         return null;
     }
     endLoad() {
@@ -119,11 +135,35 @@ class FA {
         }
         throw new Error("token error");
     }
-    addRule(status, end, change, map) {
+    isEndNow(status) {
+        for (let i of this.endNow) {
+            if (status === i)
+                return true;
+        }
+        return false;
+    }
+    isEndNowStart(status) {
+        for (let i of this.endNowStart) {
+            if (status === i)
+                return true;
+        }
+        return false;
+    }
+    isEndCanStart(status) {
+        for (let i of this.endCanStart) {
+            if (status === i)
+                return true;
+        }
+        return false;
+    }
+    addRule(status = [], end = [], change = [], map = {}, endNow = [], endNowStart = [], endCanStart = []) {
         this.status = this.status.concat(status);
         this.end = this.end.concat(end);
         this.change = this.change.concat(change);
         this.map = Object.assign({}, this.map, map);
+        this.endNow = this.endNow.concat(endNow);
+        this.endNowStart = this.endNowStart.concat(endNowStart);
+        this.endCanStart = this.endCanStart.concat(endCanStart);
         return this;
     }
 }
