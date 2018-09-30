@@ -1,0 +1,28 @@
+statement // 声明
+    -> `sign // 标识符
+     | ( statementList ) // 数组声明
+     | statement : statement  // 元组声明
+
+statementList
+    -> `sign 
+     | statement `sign
+
+item 
+    -> ( )
+     | `string
+     | `number
+     | `sign
+     | ( itemList )
+     | { itemList }
+     | item : item
+     | *let statement = item // 定义变量
+     | *let `sign ( statementList ) = ( itemList ) // 定义函数
+     | `sign [ itemList ] // 函数调用
+     | `sign [ ] // 无参函数调用
+
+itemList 
+    -> item
+     | list item
+
+
+

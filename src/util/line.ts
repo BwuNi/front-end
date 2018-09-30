@@ -13,4 +13,8 @@ export default class Line {
         }
         func(br)
     }
+
+    end(){
+        
+    }
 }
