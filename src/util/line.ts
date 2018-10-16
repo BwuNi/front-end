@@ -1,9 +1,9 @@
 const br = '\n'
 
 export default class Line {
-    data: any = ''
+    data: string = ''
 
-    constructor(line: any) {
+    constructor(line: string) {
         this.data = line
     }
 

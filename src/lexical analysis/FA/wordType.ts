@@ -44,6 +44,8 @@ enum WordType {
     Sign = 'Sign', 
     KeyWord = 'Key',
     Error = 'Error',
+
+    None = "None"
 }
 
 export default WordType

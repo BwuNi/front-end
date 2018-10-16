@@ -30,7 +30,7 @@ export default class SourceFile {
 
         this.isPushing = true
 
-        objReadline.on('line', (line) => {
+        objReadline.on('line', (line:string) => {
             this.pushLine(line)
             this.checkHolder()
         });
@@ -42,7 +42,7 @@ export default class SourceFile {
         });
     }
 
-    pushLine(line: any) {
+    pushLine(line: string) {
         this.lines.push(new Line(line))
     }
 
@@ -66,10 +66,8 @@ export default class SourceFile {
     async shiftLine(): Promise<Line | null> {
         const res = this.lines.shift()
 
-        console.log(res)
 
         if (!res && this.isPushing == false) {
-            console.log(1)
             return null
         } else if (!res) {
             await this.createHolder()

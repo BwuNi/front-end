@@ -27,6 +27,7 @@ var WordType;
     WordType["Sign"] = "Sign";
     WordType["KeyWord"] = "Key";
     WordType["Error"] = "Error";
+    WordType["None"] = "None";
 })(WordType || (WordType = {}));
 exports.default = WordType;
 //# sourceMappingURL=wordType.js.map

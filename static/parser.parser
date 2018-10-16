@@ -1,0 +1,25 @@
+Item
+    -> `sign
+     | `string
+     | `number
+     | Array
+     | Object
+     | Tuple
+
+Array
+    -> ( ArrayTail
+
+ArrayTail
+    -> )
+     | item ArrayTail
+
+Object
+    -> { ObjectTail
+
+ObjectTail
+    -> }
+     | Item ObjectTail
+
+Tuple
+    -> Item : Item
+ 

@@ -13,6 +13,8 @@ class Line {
         }
         func(br);
     }
+    end() {
+    }
 }
 exports.default = Line;
 //# sourceMappingURL=line.js.map

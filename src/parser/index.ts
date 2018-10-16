@@ -1,31 +1,40 @@
 import WordType from '../lexical analysis/FA/wordType'
 import keyWord from './keyword'
 import File from '../util/file'
+import Expr from './rules/Expr'
 
+import rule from './rules'
 
-
-
+let table: { [key: string]: Expr } | null = null
 
 export default {
     init() { },
 
+    table: () => table,
 
-    loadRule(file: File) {
-
-        file.iter(async line => {
-            const str = line.data
-
-            const content = line
-
-
-        }
-        )
-
+    async loadRule(file: File) {
+        table = await rule(file)
+        console.dir(table,{depth :10})
     },
+
     load(
         arr: { value: string, status: WordType }[]
     ) {
-        console.log(keyWord(arr))
+        if(!table) return 
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 

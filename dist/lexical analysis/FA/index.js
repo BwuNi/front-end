@@ -55,9 +55,6 @@ class FA {
             r[v.toString()] = true;
             return r;
         }, {});
-        console.log(status);
-        console.log(searchMap);
-        console.log(searchMap[this.start.toString()]);
         const newone = Symbol(Math.random());
         if (searchMap[this.start.toString()]) {
             this.start = newone;

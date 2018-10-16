@@ -88,9 +88,9 @@ export default class FA {
         }, {})
 
 
-        console.log(status)
-        console.log(searchMap)
-        console.log(searchMap[this.start.toString()])
+        // console.log(status)
+        // console.log(searchMap)
+        // console.log(searchMap[this.start.toString()])
 
         //新生成的状态
         const newone = Symbol(Math.random())

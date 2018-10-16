@@ -1,37 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const wordType_1 = require("../../lexical analysis/FA/wordType");
 class Expr {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.rules = [];
+        Expr.table[name] = this;
     }
-    addRule(list) {
-        this.rules.push(list);
+    addRule(arr) {
+        this.rules.push(arr);
     }
 }
-const expr = new Expr();
-const e0 = [
-    expr,
-    { type: wordType_1.default.Calcu },
-    expr
-];
-const e1 = [
-    { type: wordType_1.default.L0 },
-    expr,
-    { type: wordType_1.default.R0 },
-];
-const e2 = [
-    { type: wordType_1.default.Sign },
-    expr,
-    { type: wordType_1.default.L1 },
-    expr,
-    { type: wordType_1.default.R1 },
-];
-const e3 = [
-    { type: wordType_1.default.Sign },
-    expr,
-    { type: wordType_1.default.L1 },
-    expr,
-    { type: wordType_1.default.R1 },
-];
+Expr.table = {};
+exports.default = Expr;
 //# sourceMappingURL=Expr.js.map

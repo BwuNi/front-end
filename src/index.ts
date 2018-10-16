@@ -4,6 +4,7 @@ import fa from './lexical analysis'
 import parser from './parser'
 
 const resource = new File(path.resolve(__dirname, '../static/test.azi'))
+const rule = new File(path.resolve(__dirname, '../static/parser.rule'))
 
 
 
@@ -12,19 +13,12 @@ resource.iter(async line => line.iter(char => {
 }))
 
 
+
 resource.end(() => {
     parser.load(fa.result)
 })
 
 
-const rule = new File(path.resolve(__dirname, '../static/parser.rule'))
-
-
-rule.iter(async line => line.iter(char => {
-}))
-
-resource.end(() => {
-
-})
+parser.loadRule(rule)
 
 
